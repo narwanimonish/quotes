@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function Quote() {
+export default function Quote({ quote }: { quote: string[] }) {
   return (
     <div className="relative bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -9,12 +9,9 @@ export default function Quote() {
             {/* <div className="sm:text-center lg:text-left"> */}
             <div className="sm:text-center lg:text-left">
               <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                <span className="block xl:inline">
-                  “Define success on your own terms, achieve it by your own
-                  rules, and build a life you’re proud to live.”
-                </span>
+                <span className="block xl:inline">{quote[0]}</span>
                 <span className="block text-indigo-600 xl:inline">
-                  Anne Sweeney
+                  {quote[1]}
                 </span>
               </h1>
             </div>
