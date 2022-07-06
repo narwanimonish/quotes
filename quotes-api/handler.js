@@ -1,10 +1,12 @@
 const AWS = require('aws-sdk');
 const express = require('express');
+const cors = require('cors');
 const serverless = require('serverless-http');
 
 const { quotes } = require('./quotes-db');
 
 const app = express();
+app.use(cors());
 
 const QUOTES_TABLE = process.env.DYNAMODB_QUOTES_TABLE;
 const dynamoDbClient = new AWS.DynamoDB.DocumentClient();

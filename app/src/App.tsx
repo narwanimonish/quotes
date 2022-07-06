@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Quote from './components/Quote';
-import { quotes } from './quotes/quotes';
+import axios from 'axios';
+
+const QUOTE_URL =
+  'https://ibmy4e3i76.execute-api.us-east-1.amazonaws.com/quote';
 
 function App() {
   const [quote, setQuote] = useState<string[]>([]);
 
-  const randomIndex = () => Math.floor(Math.random() * (quotes.length - 1));
-
   useEffect(() => {
-    setQuote(quotes[randomIndex()].split('--'));
+    axios.get(QUOTE_URL).then((response) => {
+      const quoteItem = response.data.quote;
+      setQuote(quoteItem.split('--'));
+    });
   }, []);
   return (
     <div className="continer">
